@@ -3,6 +3,15 @@
 ## sin(x) table
 Cathleen will go to a field trip with her classmates, which is to figure out the width of a river. They are going to use Law of Sin, which is a/sin(A) = b/sin(B) = c/sin(C). We could see that they need to calculate sin(x). But a lot of Cathleen's classmates do not have scientific calculators. Cathleen asks Caroline for help and Caroline said that she will print a table for Cathleen. The table will contains the value of sin(x) for all x from 0 to 90 degree.
 
+| x degree | sin(x) |
+| -------- | ------ |
+| 1        | 0.01745240643728351 |
+| 2        | 0.03489949670250097 |
+| 3        | 0.05233595624294383 |
+| 4        | 0.0697564737441253 |
+|...       | ... |
+| 90       | 1.0 |
+
 ## sin(x) derivative table
 Cathleen noticed that Caroline is learning Calculus and she also want to know the derivative. Caroline told Cathleen that she could provide Cathleen a derivative table for sin(x) for all of x from 0 to 90 degree. Once Cathleen has the table, Cathleen could look up the derivative values for that table.
 
