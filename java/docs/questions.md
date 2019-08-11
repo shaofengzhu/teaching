@@ -1,5 +1,8 @@
 # Java Questions
 
+## Links
+https://www.w3resource.com/java-exercises/basic/index.php
+
 ## sin(x) table
 XinXin will go to a field trip with her classmates, which is to figure out the width of a river. They are going to use Law of Sin, which is a/sin(A) = b/sin(B) = c/sin(C). We could see that they need to calculate sin(x). But a lot of XinXin's classmates do not have scientific calculators. XinXin asks KaiKai for help and KaiKai said that she will print a table for XinXin. The table will contains the value of sin(x) for all x from 0 to 90 degree.
 
@@ -46,9 +49,27 @@ where the first line is how many months she bought the stock and the rest lines 
 
 She heard that KaiKai is learning Java and she want to ask KaiKai to find the the total money she spent and the average price.
 
+To read a file, you could use some code like
+```java
+BufferedReader reader = new BufferedReader(new FileReader("sumaveragefromfile.in"));
+        
+String line;
+line = reader.readLine();
+```
+To convert a string to integer, you could use some code like
+```java
+int intValue = Integer.parseInt(line);
+```
+To convert a string to double, you could use some code like
+```java
+double doubleValue = Double.parseDouble(line);
+```
+
+## print integer
+We usually use `System.out.println(intValue)` to print an integer. A hacker hacked the system and the `System.out.println(intValue)` does not work as expected anymore. However, the `System.out.print(charValue)` still works. We are panic and we want to get your help so that we could print out an integer correctly. We count on you to stop the hacker. Would you please write a function that could print out integer value.
 
 ## findindex
-A string is a sequence of characters. For example, 
+A string is a sequence of characters. For example, "Hello, World". We want to find the index of 'W' in the string.
 
 ## sin(x) integral
 Computer is not as smart as human and a computer only knows integral by sum. Let's use a computer way to calculate the integral of sin(x). We should check how accurate a computer could calcuate integral. Once we figure the integral of sin(x), we could calculate integral of sqrt(sin(x)).
