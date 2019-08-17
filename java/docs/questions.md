@@ -3,6 +3,60 @@
 ## Links
 https://www.w3resource.com/java-exercises/basic/index.php
 
+## Print 1 to 20
+Print number from 1 to 20 and every line is a number
+```text
+1
+2
+3
+...
+20
+```
+
+## Print 21 to 40
+Print number from 21 to 40 and every ine is a number
+```text
+21
+22
+23
+24
+...
+40
+```
+
+## Print 21 to 40, and have separator after 25, 30, 35, 40
+Print number from 21 to 40 and every ine is a number
+```text
+21
+22
+23
+24
+25
+-----
+26
+...
+40
+----
+```
+
+## Find sum of integer from 1 to 100
+
+## Find average of integer from 1 to 100
+
+## Find max integer in an array
+If there is an array
+```java
+int[] data = {23, 12, 67, 5, 9};
+```
+Find the max number in it
+
+## Find min integer in an array
+If there is an array
+```java
+int[] data = {23, 12, 67, 5, 9};
+```
+Find the min number in it
+
 ## sin(x) table
 XinXin will go to a field trip with her classmates, which is to figure out the width of a river. They are going to use Law of Sin, which is a/sin(A) = b/sin(B) = c/sin(C). We could see that they need to calculate sin(x). But a lot of XinXin's classmates do not have scientific calculators. XinXin asks KaiKai for help and KaiKai said that she will print a table for XinXin. The table will contains the value of sin(x) for all x from 0 to 90 degree.
 
