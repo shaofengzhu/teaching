@@ -14,6 +14,7 @@ type
 
 ## Tasks
 
-https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html
+1. https://www.cs.princeton.edu/courses/archive/spr05/cos126/cmd-prompt.html
 
-1. 
+2. https://eml.berkeley.edu/sst/basic.dos.html
+
