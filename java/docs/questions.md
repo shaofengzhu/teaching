@@ -3,6 +3,16 @@
 ## Links
 https://www.w3resource.com/java-exercises/basic/index.php
 
+## Check string in a sentence
+There is a sentence
+```text
+I read a book named "Red Bird" and it's interesting
+```
+Check whether it contains
+```text
+bird
+```
+
 ## Print 1 to 20
 Print number from 1 to 20 and every line is a number
 ```text
@@ -14,7 +24,7 @@ Print number from 1 to 20 and every line is a number
 ```
 
 ## Print 21 to 40
-Print number from 21 to 40 and every ine is a number
+Print number from 21 to 40 and every line is a number
 ```text
 21
 22
@@ -25,7 +35,7 @@ Print number from 21 to 40 and every ine is a number
 ```
 
 ## Print 21 to 40, and have separator after 25, 30, 35, 40
-Print number from 21 to 40 and every ine is a number
+Print number from 21 to 40 and every line is a number
 ```text
 21
 22
