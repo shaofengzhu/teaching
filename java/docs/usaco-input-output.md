@@ -44,7 +44,7 @@ public class swap {
 }
 ```
 
-Please note that it will be very tedius to type in all of the input. The best way to run the code is to put all of the input into the `swap.in` file, then use append `<swap.in` in the command line. The key is the character `<` symbol to use the file for System.in
+Please note that it will be very tedius to type in all of the input. The best way to run the code is to put all of the input into the `swap.in` file, then use append `<swap.in` in the command line. The key is the character `<` symbol to use the file for `System.in`
 ```console
 java swap <swap.in
 ```
