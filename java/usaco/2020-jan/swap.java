@@ -8,11 +8,11 @@ import java.util.*;
 
 public class swap {
     public static void main(String[] args) throws IOException {
-        // BufferedReader in = new BufferedReader(new FileReader("swap.in"));
-        // PrintWriter out = new PrintWriter(new FileWriter("swap.out"));
+        BufferedReader in = new BufferedReader(new FileReader("swap.in"));
+        PrintWriter out = new PrintWriter(new FileWriter("swap.out"));
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+        //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        //PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
 
 
         StringTokenizer st = new StringTokenizer(in.readLine());
@@ -28,6 +28,27 @@ public class swap {
         int BEnd = Integer.parseInt(st.nextToken());
 
         int[] cows = new int[cowCount];
+        for (int i = 0; i < cowCount; i++) {
+            cows[i] = i + 1;
+        }
+
+        int cycleCount = 0;
+        while(true) {
+            swapCows(cows, AStart, AEnd);
+            swapCows(cows, BStart, BEnd);
+            cycleCount++;
+            boolean same = true;
+            for (int i = 0; same && i < cowCount; i++) {
+                same = cows[i] == (i + 1);
+            }
+
+            if (same) {
+                break;
+            }
+        }
+
+        processCount = processCount % cycleCount;
+
         for (int i = 0; i < cowCount; i++) {
             cows[i] = i + 1;
         }
