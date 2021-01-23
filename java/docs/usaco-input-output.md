@@ -44,11 +44,12 @@ public class swap {
 }
 ```
 
-To run it, we will use
+Please note that it will be very tedius to type in all of the input. The best way to run the code is to put all of the input into the `swap.in` file, then use append `<swap.in` in the command line. The key is the character `<` symbol to use the file for System.in
 ```console
 java swap <swap.in
 ```
+
 and we will see the output from command line.
 
-
-When we need to debug the code, it's still better to change to the old way. Before you submit, please change to the new way.
+## Best practice
+When we need to debug the code, it's still better to change to the old way. Before you submit, please change to the new way by comment out and un-comment out the lines.
