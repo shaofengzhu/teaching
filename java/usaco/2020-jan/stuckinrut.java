@@ -11,7 +11,7 @@ enum Direction {
 public class stuckinrut {
     public static void main(String[] args) throws IOException {
         BufferedReader input;
-        // input = new BufferedReader(new FileReader("stuckinrut.in"));
+        //input = new BufferedReader(new FileReader("stuckinrut.in"));
         input = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -38,37 +38,45 @@ public class stuckinrut {
             cowCells[i] = 1;
         }
 
-        int maxHour = 1000000;
-        for (int hour = 0; hour < maxHour; hour++) {
+        // int maxHour = Math.max(cowCount, 10000);
+        for (int hour = 0; hour < cowCount; hour++) {
 
             int[] cowXsBeforeMove = Arrays.copyOf(cowXs, cowXs.length);
             int[] cowYsBeforeMove = Arrays.copyOf(cowYs, cowYs.length);
 
             int minIntersection = Integer.MAX_VALUE;
             for (int i = 0; i < cowCount; i++) {
-                for (int j = 0; j < cowCount; j++) {
-                    if (cowDirections[i] == Direction.N) {
-                        if ((cowDirections[j] == Direction.E || cowDirections[j] == Direction.W) && cowYs[i] < cowYs[j]) {
-                            minIntersection = Math.min(minIntersection, cowYs[j] - cowYs[i]);
-                        }
-                    }
-                    else if (cowDirections[i] == Direction.S) {
-                        if ((cowDirections[j] == Direction.E || cowDirections[j] == Direction.W) && cowYs[i] > cowYs[j]) {
-                            minIntersection = Math.min(minIntersection, cowYs[i] - cowYs[j]);
-                        }
-                    }
-                    else if (cowDirections[i] == Direction.W) {
-                        if ((cowDirections[j] == Direction.N || cowDirections[j] == Direction.S) && cowXs[i] > cowXs[j]) {
-                            minIntersection = Math.min(minIntersection, cowXs[i] - cowXs[j]);
-                        }
-                    }
-                    else {
-                        // Move East
-                        if ((cowDirections[j] == Direction.N || cowDirections[j] == Direction.S) && cowXs[i] < cowXs[j]) {
-                            minIntersection = Math.min(minIntersection, cowXs[j] - cowXs[i]);
+                if (!cowStopped[i]) {
+                    for (int j = 0; j < cowCount; j++) {
+                        if (!cowStopped[j]) {
+                            if (cowDirections[i] == Direction.N) {
+                                if ((cowDirections[j] == Direction.E || cowDirections[j] == Direction.W) && cowYs[i] < cowYs[j]) {
+                                    minIntersection = Math.min(minIntersection, cowYs[j] - cowYs[i]);
+                                }
+                            }
+                            else if (cowDirections[i] == Direction.S) {
+                                if ((cowDirections[j] == Direction.E || cowDirections[j] == Direction.W) && cowYs[i] > cowYs[j]) {
+                                    minIntersection = Math.min(minIntersection, cowYs[i] - cowYs[j]);
+                                }
+                            }
+                            else if (cowDirections[i] == Direction.W) {
+                                if ((cowDirections[j] == Direction.N || cowDirections[j] == Direction.S) && cowXs[i] > cowXs[j]) {
+                                    minIntersection = Math.min(minIntersection, cowXs[i] - cowXs[j]);
+                                }
+                            }
+                            else {
+                                // Move East
+                                if ((cowDirections[j] == Direction.N || cowDirections[j] == Direction.S) && cowXs[i] < cowXs[j]) {
+                                    minIntersection = Math.min(minIntersection, cowXs[j] - cowXs[i]);
+                                }
+                            }
                         }
                     }
                 }
+            }
+
+            if (minIntersection == Integer.MAX_VALUE) {
+                break;
             }
             
             for (int i = 0; i < cowCount; i++) {
@@ -77,40 +85,48 @@ public class stuckinrut {
                 }
 
                 if (cowDirections[i] == Direction.N) {
-                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i], cowYs[i] + 1)) {
+                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i], cowYs[i] + minIntersection)) {
                         cowStopped[i] = true;
+                        cowYs[i] = cowYs[i] + minIntersection - 1;
+                        cowCells[i] += minIntersection - 1;
                     }
                     else {
-                        cowYs[i] = cowYs[i] + 1;
-                        cowCells[i]++;
+                        cowYs[i] = cowYs[i] + minIntersection;
+                        cowCells[i] += minIntersection;
                     }
                 }
                 else if (cowDirections[i] == Direction.E) {
-                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i] + 1, cowYs[i])) {
+                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i] + minIntersection, cowYs[i])) {
                         cowStopped[i] = true;
+                        cowXs[i] = cowXs[i] + minIntersection - 1;
+                        cowCells[i] += minIntersection - 1;
                     }
                     else {
-                        cowXs[i] = cowXs[i] + 1;
-                        cowCells[i]++;
+                        cowXs[i] = cowXs[i] + minIntersection;
+                        cowCells[i] += minIntersection;
                     }
                 }
                 else if (cowDirections[i] == Direction.S) {
-                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i], cowYs[i] - 1)) {
+                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i], cowYs[i] - minIntersection)) {
                         cowStopped[i] = true;
+                        cowYs[i] = cowYs[i] - (minIntersection -1) ;
+                        cowCells[i] += minIntersection - 1;
                     }
                     else {
-                        cowYs[i] = cowYs[i] - 1;
-                        cowCells[i]++;
+                        cowYs[i] = cowYs[i] - minIntersection;
+                        cowCells[i] += minIntersection;
                     }
                 }
                 else {
                     // Direction.W
-                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i] -1, cowYs[i])) {
+                    if (alreadyEatten(cowStartXs, cowStartYs, cowXsBeforeMove, cowYsBeforeMove, cowXs[i] -minIntersection, cowYs[i])) {
                         cowStopped[i] = true;
+                        cowXs[i] = cowXs[i] - (minIntersection -1);
+                        cowCells[i] += minIntersection - 1;
                     }
                     else {
-                        cowXs[i] = cowXs[i] - 1;
-                        cowCells[i]++;
+                        cowXs[i] = cowXs[i] - minIntersection;
+                        cowCells[i] += minIntersection;
                     }
                 }
             }
@@ -129,7 +145,7 @@ public class stuckinrut {
         }
 
         for (int i = 0; i < cowCount; i++) {
-            if (cowCells[i] == maxHour + 1) {
+            if (!cowStopped[i]) {
                 System.out.println("Infinity");
             }
             else {
