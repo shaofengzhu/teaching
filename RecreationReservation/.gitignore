@@ -2,3 +2,5 @@ packages/
 bin
 obj
 .vs
+RecreationReservation/.rec-account
+RecreationReservation/.rec-password

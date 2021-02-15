@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -19,6 +20,9 @@ namespace RecreationReservation
 		private IWebDriver m_webDriver;
 		private IWebElement m_bookNowElement;
 
+		private string m_account;
+		private string m_password;
+
 		DateTime m_targetDateTime;
 
 		public Form1()
@@ -28,6 +32,9 @@ namespace RecreationReservation
 			DateTime timeNow = DateTime.Now;
 			TxtHour.Text = timeNow.Hour.ToString();
 			TxtMinute.Text = "0";
+
+			m_account = File.ReadAllText(".rec-account").Trim();
+			m_password = File.ReadAllText(".rec-password").Trim();
 		}
 
 		private void BtnLaunchBrowser_Click(object sender, EventArgs e)
@@ -45,11 +52,9 @@ namespace RecreationReservation
 
 			Thread.Sleep(1000 * 3);
 
-			string account = "";
-			string password = "";
 
-			m_webDriver.FindElement(By.Id("rec-acct-sign-in-email-address")).SendKeys(account);
-			m_webDriver.FindElement(By.Id("rec-acct-sign-in-password")).SendKeys(password);
+			m_webDriver.FindElement(By.Id("rec-acct-sign-in-email-address")).SendKeys(m_account);
+			m_webDriver.FindElement(By.Id("rec-acct-sign-in-password")).SendKeys(m_password);
 			m_webDriver.FindElement(By.CssSelector("button.rec-acct-sign-in-btn")).Click();
 
 			Thread.Sleep(1000 * 3);
